@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExportadorExcel.Infraestructura.Interfaces\ExportadorExcel.Infraestructura.Interfaces.csproj" />
+    <ProjectReference Include="..\ExportadorExcel.Modelos\ExportadorExcel.Modelos.csproj" />
+  </ItemGroup>
+
+</Project>

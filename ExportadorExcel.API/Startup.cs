@@ -1,8 +1,10 @@
+using ExportadorExcel.Infraestructura;
+using ExportadorExcel.Infraestructura.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace ExportadorExcel.API
 {
@@ -17,17 +19,24 @@ namespace ExportadorExcel.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IGeneradorReporte, GeneradorReporte>();
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Generador Excel", Version = "v1" });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Generador Excel V1");
+            });
 
             app.UseRouting();
 
