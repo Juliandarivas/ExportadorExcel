@@ -63,19 +63,9 @@ namespace ExportadorExcel.API.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] PlantillaElemento {
+        public static byte[] Plantilla {
             get {
-                object obj = ResourceManager.GetObject("PlantillaElemento", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] PlantillaElementos {
-            get {
-                object obj = ResourceManager.GetObject("PlantillaElementos", resourceCulture);
+                object obj = ResourceManager.GetObject("Plantilla", resourceCulture);
                 return ((byte[])(obj));
             }
         }

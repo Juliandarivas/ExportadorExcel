@@ -3,14 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\PlantillaElemento.xlsx" />
-  </ItemGroup>
     
   <ItemGroup>
-    <EmbeddedResource Include="Resources\PlantillaElemento.xlsx" />
-    <EmbeddedResource Include="Resources\PlantillaElementos.xlsx" />
+    <EmbeddedResource Include="Resources\Plantilla.xlsx" />
   </ItemGroup>
 
   <ItemGroup>

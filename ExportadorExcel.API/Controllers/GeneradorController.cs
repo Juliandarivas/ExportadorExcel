@@ -23,22 +23,21 @@ namespace ExportadorExcel.API.Controllers
         {
             List<Producto> productos = CrearProductos();
 
-            byte[] bytesExcel = _generadorReporte.Generar(Resources.PlantillaElemento, productos);
+            byte[] bytesExcel = _generadorReporte.Generar(Resources.Plantilla, productos);
 
-            return File(bytesExcel, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Productos.xlsx");
+            return File(bytesExcel, Constantes.MIMETypeMSExcel, "Productos.xlsx");
         }
-
 
         [HttpGet("Elementos")]
         public IActionResult ObtenerElementos()
         {
             List<Producto> productos = CrearProductos();
 
-            List<Producto> productosAdicionales = CrearProductos();
+            List<Producto> productosAdicionales = CrearProductosAdicionales();
 
-            byte[] bytesExcel = _generadorReporte.Generar(Resources.PlantillaElementos, "DatosProductos;DatosAlmacenes",  productos, productosAdicionales);
+            byte[] bytesExcel = _generadorReporte.Generar(Resources.Plantilla, "Datos;DatosProductos",  productos, productosAdicionales);
 
-            return File(bytesExcel, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Productos.xlsx");
+            return File(bytesExcel, Constantes.MIMETypeMSExcel, "Productos.xlsx");
         }
 
         private List<Producto> CrearProductos()
@@ -55,6 +54,27 @@ namespace ExportadorExcel.API.Controllers
                 new Producto(8, "FNX0008", "Alfombra sala", new DateTime(2020, 5, 1), 3_100_000),
                 new Producto(9, "FNX0009", "Mesa para comedor de vidrio", new DateTime(2020, 5, 1), 2_000_000),
                 new Producto(10, "FNX0010", "Mesa redonda de vidrio", new DateTime(2020, 5, 1), 5_000_000),
+            };
+        }
+
+        private List<Producto> CrearProductosAdicionales()
+        {
+            return new List<Producto>
+            {
+                new Producto(7, "FNX00017", "Monitor 32 Pulgadas", new DateTime(2020, 5, 1), 2_000_000),
+                new Producto(8, "FNX00018", "Teclado", new DateTime(2020, 5, 1), 3_100_000),
+                new Producto(9, "FNX00019", "Mouse", new DateTime(2020, 5, 1), 2_000_000),
+                new Producto(10, "FNX0020", "Horno microondas", new DateTime(2020, 5, 1), 5_000_000),
+                new Producto(11, "FNX0001", "Estufa 4 puestos", new DateTime(2020, 5, 1), 500_000),
+                new Producto(12, "FNX0002", "Banda Caminadora", new DateTime(2020, 5, 1), 3_000_000),
+                new Producto(13, "FNX0003", "Colchoneta Gimnasio", new DateTime(2020, 5, 1), 400_000),
+                new Producto(14, "FNX0004", "Juego De Ollas Tramontina 11 Piezas", new DateTime(2020, 5, 1), 800_000),
+                new Producto(15, "FNX0005", "Batería De Cocina 5 Piezas Tramontina", new DateTime(2020, 5, 1), 1_200_000),
+                new Producto(16, "FNX0006", "Estufa Induccion Tramontina", new DateTime(1980, 1, 1), 1_500_000),
+                new Producto(17, "FNX0007", "Juego De Sartenes Tramontina", new DateTime(2020, 5, 1), 2_000_000),
+                new Producto(18, "FNX0008", "Juego De Ollas Antiadherente Tramontina", new DateTime(2020, 5, 1), 3_100_000),
+                new Producto(19, "FNX0009", "Cuchillos Tramontina", new DateTime(2020, 5, 1), 2_000_000),
+                new Producto(20, "FNX0010", "Cortador Pizza", new DateTime(2020, 5, 1), 5_000_000),
             };
         }
 
